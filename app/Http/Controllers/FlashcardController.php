@@ -1,17 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FlashcardResource;
+use App\Models\Flashcard;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class FlashcardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        //
+        $flashcards = Flashcard::all();
+
+        return FlashcardResource::collection($flashcards);
     }
 
     /**
