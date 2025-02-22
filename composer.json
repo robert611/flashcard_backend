@@ -10,9 +10,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-xdebug": "*",
+        "knuckleswtf/scribe": "^5.0",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9",
-        "ext-xdebug": "*"
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",
