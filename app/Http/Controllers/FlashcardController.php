@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFlashcardRequest;
 use App\Http\Resources\FlashcardResource;
 use App\Models\Flashcard;
 use Illuminate\Http\Request;
@@ -22,19 +23,13 @@ class FlashcardController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFlashcardRequest $request): FlashcardResource
     {
-        //
+        $flashcard = Flashcard::create($request->validated());
+
+        return new FlashcardResource($flashcard);
     }
 
     /**
