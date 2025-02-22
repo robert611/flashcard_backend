@@ -13,6 +13,7 @@
         "ext-xdebug": "*",
         "knuckleswtf/scribe": "^5.0",
         "laravel/framework": "^11.31",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
