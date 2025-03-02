@@ -9,17 +9,21 @@ use App\Models\FlashcardFolder;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FlashcardFactory extends Factory
+class FlashcardFolderFactory extends Factory
 {
-    protected $model = Flashcard::class;
+    protected $model = FlashcardFolder::class;
 
     public function definition(): array
     {
         return [
             'name' => $this->faker->word(),
-            'value' => $this->faker->sentence(),
+            'description' => $this->faker->sentence(),
             'owner_id' => User::factory(),
-            'folder_id' => FlashcardFolder::factory(),
         ];
+    }
+
+    public function withFlashcards(int $amount = 10): self
+    {
+        return $this->has(Flashcard::factory()->count($amount), 'flashcards');
     }
 }
