@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Database\Factories\FlashcardFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static Builder<static>|Flashcard whereOwnerId($value)
  * @method static Builder<static>|Flashcard whereUpdatedAt($value)
  * @method static Builder<static>|Flashcard whereValue($value)
+ * @property int $folder_id
+ * @property-read FlashcardFolder $folder
+ * @method static FlashcardFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Flashcard whereFolderId($value)
  * @mixin Eloquent
  */
 class Flashcard extends Model
