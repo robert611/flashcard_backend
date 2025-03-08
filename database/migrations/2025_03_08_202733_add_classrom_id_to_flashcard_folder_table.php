@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('flashcard_folder', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 64);
-            $table->string('description', 1024)->nullable();
-            $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('flashcard_folder', function (Blueprint $table) {
+            $table->foreignId('classroom_id')->nullable()->constrained('classroom')->nullOnDelete();
         });
     }
 
@@ -27,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flashcard_folder');
+        Schema::table('flashcard_folder', function (Blueprint $table) {
+            $table->dropForeign(['classroom_id']);
+            $table->dropColumn('classroom_id');
+        });
     }
 };

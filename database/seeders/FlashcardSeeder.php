@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\Flashcard;
+use App\Models\FlashcardFolder;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -30,11 +31,19 @@ class FlashcardSeeder extends Seeder
             ['name' => 'Capital of Brazil', 'value' => 'Brasilia'],
         ];
 
+        /** @var FlashcardFolder $flashcardFolder */
+        $flashcardFolder = FlashcardFolder::create([
+            'name' => 'Famous capitals',
+            'description' => 'This folder helps to learn countries and their capitals.',
+            'owner_id' => $user->id,
+        ]);
+
         foreach ($flashcards as $data) {
             Flashcard::create([
                 'name' => $data['name'],
                 'value' => $data['value'],
                 'owner_id' => $user->id,
+                'folder_id' => $flashcardFolder->id,
             ]);
         }
     }
