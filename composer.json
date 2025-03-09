@@ -12,6 +12,7 @@
         "php": "^8.2",
         "ext-xdebug": "*",
         "knuckleswtf/scribe": "^5.0",
+        "laravel/cashier": "^15.6",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
