@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FlashcardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -17,3 +18,5 @@ Route::post('/flashcards', [FlashcardController::class, 'store']);
 Route::get('/flashcards/{id}', [FlashcardController::class, 'show']);
 Route::put('/flashcards/{id}', [FlashcardController::class, 'update']);
 Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy']);
+
+Route::get('/classrooms', [ClassroomController::class, 'index']);

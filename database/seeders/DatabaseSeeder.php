@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FlashcardSeeder::class);
         $this->call(FlashcardFolderSeeder::class);
+        $this->call(ClassroomSeeder::class);
     }
 }

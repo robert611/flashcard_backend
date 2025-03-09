@@ -8,8 +8,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Eloquent;
 
+/**
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property string $key
+ * @property int $owner_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User $owner
+ * @mixin Eloquent
+ */
 class Classroom extends Model
 {
     use HasFactory;

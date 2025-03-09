@@ -21,7 +21,8 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string|null $description
  * @property int $owner_id
- * @property Carbon|null $created_at
+ * @property int|null $classroom_id
+ * @property Carbon $created_at
  * @property Carbon|null $updated_at
  * @property-read Collection<int, Flashcard> $flashcards
  * @property-read int|null $flashcards_count
@@ -53,6 +54,7 @@ class FlashcardFolder extends Model
         'name',
         'description',
         'owner_id',
+        'classroom_id',
     ];
 
     public function owner(): BelongsTo
@@ -63,5 +65,10 @@ class FlashcardFolder extends Model
     public function flashcards(): HasMany
     {
         return $this->hasMany(Flashcard::class, 'folder_id');
+    }
+
+    public function classroom(): BelongsTo
+    {
+        return $this->belongsTo(Classroom::class, 'classroom_id');
     }
 }

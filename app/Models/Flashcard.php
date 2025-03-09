@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  *
- *
  * @property int $id
  * @property string $name
  * @property string $value
