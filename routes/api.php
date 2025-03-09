@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FlashcardController;
+use App\Http\Controllers\Stripe\StripePriceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -20,3 +21,7 @@ Route::put('/flashcards/{id}', [FlashcardController::class, 'update']);
 Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy']);
 
 Route::get('/classrooms', [ClassroomController::class, 'index']);
+
+Route::get('/stripe/prices', [StripePriceController::class, 'index']);
+
+
