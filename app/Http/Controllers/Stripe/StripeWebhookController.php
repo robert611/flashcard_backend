@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Stripe;
 
+use App\Events\Stripe\PaymentIntentSucceeded;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -51,6 +52,10 @@ class StripeWebhookController extends Controller
             case 'payment_intent.succeeded':
                 /** @var PaymentIntent $paymentIntent */
                 $paymentIntent = $event->data->object;
+                $userId = $paymentIntent->metadata->user_id;
+
+                event(new PaymentIntentSucceeded($paymentIntent->id, $userId));
+
                 Log::info('Subskrpcja wykupiona:', ['payment_intent_id' => $paymentIntent->id]);
                 break;
 

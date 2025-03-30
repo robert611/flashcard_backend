@@ -37,6 +37,9 @@ class StripeCheckoutController extends Controller
             'success_url' => $frontendHost . FrontendUrlResource::PAYMENT_CANCEL_URL,
             'cancel_url' => $frontendHost . FrontendUrlResource::PAYMENT_CANCEL_URL,
             'mode' => $mode,
+            'metadata' => [
+                'user_id' => $user->id,
+            ],
         ])->toJson();
     }
 }
