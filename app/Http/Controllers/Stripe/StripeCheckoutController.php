@@ -34,7 +34,7 @@ class StripeCheckoutController extends Controller
         $mode = $price->recurring ? 'subscription' : 'payment';
 
         return $user->checkout([$stripePriceId => $quantity], [
-            'success_url' => route('checkout-success'),
+            'success_url' => $frontendHost . FrontendUrlResource::PAYMENT_CANCEL_URL,
             'cancel_url' => $frontendHost . FrontendUrlResource::PAYMENT_CANCEL_URL,
             'mode' => $mode,
         ])->toJson();

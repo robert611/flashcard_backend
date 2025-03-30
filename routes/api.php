@@ -6,6 +6,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FlashcardController;
 use App\Http\Controllers\Stripe\StripeCheckoutController;
 use App\Http\Controllers\Stripe\StripePriceController;
+use App\Http\Controllers\Stripe\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -25,5 +26,4 @@ Route::get('/classrooms', [ClassroomController::class, 'index']);
 Route::get('/stripe/prices', [StripePriceController::class, 'index']);
 
 Route::post('/stripe/checkout', [StripeCheckoutController::class, 'checkout'])->middleware('auth:sanctum');
-Route::view('/checkout/success', 'checkout.success')->name('checkout-success')->middleware('auth:sanctum');
-Route::view('/checkout/cancel', 'checkout.cancel')->name('checkout-cancel')->middleware('auth:sanctum');
+Route::post('/stripe/checkout/success/webhook', [StripeWebhookController::class, 'handleSuccessCheckout']);
