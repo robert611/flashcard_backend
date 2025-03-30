@@ -24,6 +24,6 @@ Route::get('/classrooms', [ClassroomController::class, 'index']);
 
 Route::get('/stripe/prices', [StripePriceController::class, 'index']);
 
-Route::get('/stripe/checkout', [StripeCheckoutController::class, 'checkout'])->middleware('auth:sanctum');
+Route::post('/stripe/checkout', [StripeCheckoutController::class, 'checkout'])->middleware('auth:sanctum');
 Route::view('/checkout/success', 'checkout.success')->name('checkout-success')->middleware('auth:sanctum');
 Route::view('/checkout/cancel', 'checkout.cancel')->name('checkout-cancel')->middleware('auth:sanctum');
